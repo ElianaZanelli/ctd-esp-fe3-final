@@ -16,9 +16,14 @@ code {
   background-color: rgba(136, 136, 136, 0.116);
   padding: 10px;
   border: none;
+  border-radius: 5%;
+  margin-bottom: 5px;
   width: 100%;
   cursor: pointer;
-  
+}
+
+.favButton:hover{
+  background-color: #b4f1dc;
 }
 
 h1{

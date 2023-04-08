@@ -19,8 +19,17 @@ const ContextGlobal = createContext(undefined);
 const globalReducer = (state, action) => {
   switch(action.type){
     case 'ADD_FAV':
-      alert("Se ha añadido a favoritos");
-      return { theme: state.theme, data: state.data, favs: [...state.favs, action.payload], odontologoDetail: state.odontologoDetail}
+      const storageFavs = JSON.parse(localStorage.getItem("favs"));
+      const encontrado = storageFavs.find(objeto => {
+        return objeto.id === action.payload.id
+      })
+      if(storageFavs.length === 0 || encontrado === undefined){
+        alert("Se ha añadido a favoritos");
+        return { theme: state.theme, data: state.data, favs: [...state.favs, action.payload], odontologoDetail: state.odontologoDetail}
+      }else{
+        alert("El odontólogo ya se encuentra en favoritos");
+        return {...state}
+      }
     case 'TOGGLE_THEME': 
       return { theme: state.theme.theme ? themes.dark : themes.light, data: state.data, favs: state.favs, odontologoDetail: state.odontologoDetail}
     case 'GET_ODONTOLOGOS':
