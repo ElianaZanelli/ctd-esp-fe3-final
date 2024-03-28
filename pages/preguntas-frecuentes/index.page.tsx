@@ -8,7 +8,7 @@ import { type FaqsType } from '../../components/faqs/faqsData'
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   //const urlVercel = 'http://localhost:3001'
-  const urlVercel =''
+  const urlVercel ='ctd-esp-fe3-final-five-pi.vercel.app'
   try {
     const res = await fetch(`${urlVercel}/api/faq`)
     if (!res.ok) {
