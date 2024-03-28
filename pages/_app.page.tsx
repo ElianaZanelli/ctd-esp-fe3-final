@@ -4,7 +4,7 @@ import LayoutGeneral from "dh-marvel/components/layouts/layout-general";
 import {theme} from "dh-marvel/styles/material-theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <ThemeProvider theme={theme}>
+  return (<ThemeProvider theme={theme}>
     <CssBaseline />
     <LayoutGeneral>
       <Component {...pageProps} />
@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 height: 100%;
               }
             `}</style>
-  </ThemeProvider>
+  </ThemeProvider>)
 }
 
 export default MyApp
