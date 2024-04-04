@@ -48,7 +48,10 @@ export default function CardComic({
                     <span style={{ marginLeft: '0.5rem' }}>${price}</span>
                 </Typography>
                 <Typography variant="body1" color="text.secondary">
-                    {description.length === 0 ? 'Sin descripción disponible' : description}
+                    {description?.length === 0 ? 'Sin descripción disponible' : description}
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                    {stock > 0 ? `${stock} disponibles!`:''}
                 </Typography>
             </CardContent>
             <CardActions>
@@ -58,6 +61,7 @@ export default function CardComic({
                             <Button variant="contained" endIcon={<ShoppingCartOutlinedIcon />}>
                                 Comprar
                             </Button>
+                            
                         </Link>
                     )
                     : (

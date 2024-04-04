@@ -6,6 +6,7 @@ import { getComics } from '../services/marvel/marvel.service'
 import React, { useEffect, useState } from 'react'
 import PaginationOutlined from '../components/Pagination'
 import ResponsiveGrid from '../components/Grid'
+import LayoutGeneral from 'dh-marvel/components/layouts/layout-general'
 
 const INITIAL_OFFSET = 0
 const INITIAL_LIMIT = 12
@@ -15,7 +16,7 @@ interface Comic {
   title: string
 }
 
-interface IndexProps {
+export interface IndexProps {
   initialComics: Comic[]
   initialTotal: number
 }
@@ -48,9 +49,10 @@ const Index: NextPage<IndexProps> = ({ initialComics, initialTotal }: IndexProps
     const fetchDataAndCleanUp = async (): Promise<void> => {
       try {
         const offset = LIMIT * (page - 1)
-        const response = await getComics(offset, LIMIT)
-        setComics(response?.data?.results ?? [])
-        setTotal(response?.data?.total ?? 0)
+        const response = await fetch(`/api/comics?offset=${offset}&limit=${LIMIT}`)
+        const data = await response.json()
+        setComics(data?.results ?? [])
+        setTotal(data?.total ?? 0)
       } catch (error) {
         console.error('Error fetching comics:', error)
       }
@@ -73,10 +75,12 @@ const Index: NextPage<IndexProps> = ({ initialComics, initialTotal }: IndexProps
         <title>Inicio | DH MARVEL</title>
         <meta name="description" content="Marvel's Store Sitio Web" />
       </Head>
+      <LayoutGeneral>
         <BodySingle title={'Aplicación Marvel'}>
           <ResponsiveGrid data={comics} />
           <PaginationOutlined count={Math.round(total / 12)} page={page} handleChange={handleChange} />
         </BodySingle>
+      </LayoutGeneral>      
     </>
   )
 }

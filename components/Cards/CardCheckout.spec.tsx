@@ -1,6 +1,6 @@
 import React from 'react'
-import CardCharacter from './CardCharacter'
 import { render, screen } from '@testing-library/react'
+import CardCharacter from './CardCharacter'
 
 describe('CardCharacter', () => {
   describe('when rendering default', () => {

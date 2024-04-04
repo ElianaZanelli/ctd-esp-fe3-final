@@ -5,13 +5,15 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import Link from 'next/link'
 import Typography from '@mui/material/Typography'
 
+interface CharactersAccordion{
+  title: string
+  characters: Array<{ id: string, name: string }>
+}
+
 export default function CharactersAccordion ({
   title,
   characters
-}: {
-  title: string
-  characters: Array<{ id: string, name: string }>
-}): JSX.Element {
+}: CharactersAccordion): JSX.Element {
   return (
     <div>
       <Accordion>

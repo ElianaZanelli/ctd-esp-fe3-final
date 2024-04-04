@@ -40,11 +40,13 @@ const Faq: React.FC<FaqProps> = ({ dataFaqts }) => {
         <title>Preguntas frecuentes | DH MARVEL</title>
         <meta name="description" content="Preguntas frecuentes sobre DH MARVEL" />
       </Head>
+      <LayoutGeneral>
         <BodySingle title="Preguntas frecuentes">
           {dataFaqts.map((faq) => {
             return <SimpleAccordion key={faq.id} id={faq.id} question={faq.question} answer={faq.answer} />
           })}
         </BodySingle>
+      </LayoutGeneral>
     </>
   )
 }
